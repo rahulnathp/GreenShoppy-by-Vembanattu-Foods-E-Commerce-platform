@@ -1,0 +1,125 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<section class="sections">
+
+    <div class="roots"></div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="frame bg-light">
+                <div class="ms-3">
+                    <h3>Filters</h3>
+                </div>
+                <div>
+                    <h5 class="mt-3 ms-3">ORDER STATUS</h5>
+                    <div class="filterElements ms-3 mt-3 fs-5">
+                        <input type="checkbox" id="onTheWay" name="onTheWay" value="placed">
+                        <label for="onTheWay"> On the way</label><br>
+                        <input type="checkbox" id="delivered" name="delivered" value="delivered">
+                        <label for="delivered"> Delivered</label><br>
+                        <input type="checkbox" id="cancelled" name="cancelled" value="cancelled">
+                        <label for="cancelled"> Cancelled</label><br>
+                        <input type="checkbox" id="returned" name="returned" value="returned">
+                        <label for="returned"> Returned</label><br>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-10">
+            <div class="">
+                <input class="orderSearch" type="text" placeholder="Search your orders here">
+                <a href="" class="btn btn-primary">Search orders</a>
+            </div>
+            <div class="ordersCard">
+                <div class="p-2">
+                    {{#each orders}}
+                    <div class="row mt-3">
+
+                        <div class="col-md-1">
+                            <div id="imageDiv1">
+                                <img src="/category-image/{{this.products.Front_image}}" alt="{{this._id}}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+    
+                            <li class="text-dark">{{this.products.Product_title}}</li>
+                            <li>{{this.products.Product_description}}</li>
+                            <div class="col-md-2">
+                            <li class="text-dark fs-5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                    <path
+                                        d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                                </svg>{{this.products.Selling_Price}}</li></div>
+                                <div class="col-md-3">
+                            <li class="text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                    <path
+                                        d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
+                                </svg>{{this.products.Maximum_retail_price}}</li></div>
+                                <div class="col-md-3">
+                            <li class="text-muted">{{this.status}}</li></div>
+                                </div>
+                        </div>
+                        
+                        <div class="col-md-5">
+                                    <tr>
+                            
+                            <td>{{this.date}}</td>
+                            <td class="text-center">{{this.deliveryDetails.address}}</td>
+                            <td class="text-center">{{this.deliveryDetails.pincode}}</td>
+                            <td class="text-center">{{this.deliveryDetails.mobile}}</td>
+                            <td class="text-center">{{this.totalAmount}}</td>
+                            <td class="text-center">{{this.paymentMethod}}</td>
+                            <td class="text-center">{{this.status}}</td>
+                            <td class="text-center">
+                                <a href="/orders/products/{{this._id}}" class="btn btn-success"
+                                    style="background-color: #00b74a;width:100px">View</a>
+                                <br><br>
+                                {{#unlessEquals this.status 'cancelled'}}
+                                {{#unlessEquals this.status 'delivered'}}
+                                <a href="/orders/cancel-order/{{this._id}}" class="btn btn-danger"
+                                    style="background-color: #f93154; width:100px">Cancel</a>
+                                {{/unlessEquals}}
+                                {{/unlessEquals}}
+                            </td>
+                          
+                        </tr>
+
+                        </div>
+
+
+
+
+                        {{/each}}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+</section>
+<script>
+ $(document).ready(function () {
+        $('#example').DataTable({
+            "order": [[0, "desc"]],
+            "columnDefs": [{ "targets": 0, "type": "date-eu" }],
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.modal({
+                        header: function (row) {
+                            var data = row.data();
+                            return 'Details for ' + data[0] + ' ' + data[1];
+                        }
+                    }),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                        tableClass: 'table'
+                    })
+                }
+            }
+        });
+    });
+</script>

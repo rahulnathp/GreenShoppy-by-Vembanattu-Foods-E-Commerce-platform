@@ -1,0 +1,556 @@
+<header>
+  <div class="menu">
+    <table>
+      <tr>
+        <td><a class="greenShoppyTitle" href="/">GreenShoppy</a></td>
+
+        <td>
+          <input type="text" class="search" name="search" placeholder="Search"><button type="submit"><i
+              class="fa fa-search"></i></button>
+        </td>
+        <td>
+          <span>
+            <div class="navbar">
+              <div class="dropdown1">
+                <button class="dropbtn">Account
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown1-content">
+                  <a class="btn" onclick="warning()">Profile</a>
+                  <a class="btn" onclick="warning()">Orders</a>
+                  <a class="btn" onclick="warning()">Wishlist</a>
+                  <a class="btn text-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight">Login</a>
+                  {{!-- --}}
+                </div>
+              </div>
+              <div class="dropdown1">
+                <a href="/guestlogin/cart"><button class="dropbtn cart"><i class="fa fa-shopping-cart"></i> <span
+                    class="value">{{guestCart.length}}</span>
+                </button></a>
+                <div class="dropdown1-content cart-content">
+
+                  <a>
+                    {{#each guestCart}}
+                    <ul>
+                      <li>
+                        <img src="/category-image/{{this.products.Front_image}}" alt="Item">
+                      </li>
+                      <li>
+                        <span class="title">{{this.products.Product_title}}</span>
+                        <span class="sub-title"><i class="fa fa-rupee"></i><span>
+                      </li>
+                      <li><i class="fa fa-trash"></i></li>
+                    </ul>
+                    {{/each}}
+
+                    <button type="submit" class="btn1">CheckOut</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="topnav" id="myTopnav">
+    <div class="dropdown1">
+      <button class="dropbtn">Personal
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content mega-dropdown1">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Personal Care</h3>
+            <a href="#">Oral Care</a>
+            <a href="#">Herbals & Naturals</a>
+            <a href="#">Face Wash</a>
+          </div>
+          <div class="col-md-2">
+            <h3></h3>
+            <a href="#">Baby Wash</a>
+            <a href="#">Baby Oil</a>
+            <a href="#">More</a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown1">
+      <button class="dropbtn">Men & Women
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content mega-dropdown1">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Clothing</h3>
+            <a href="#">Men Jeans</a>
+            <a href="#">Women Jeggings</a>
+            <a href="#">Trousers</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Grooming</h3>
+            <a href="#">Perfumes</a>
+            <a href="#">Deodrants</a>
+            <a href="#">Hair Groom</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Footware</h3>
+            <a href="#">Casual</a>
+            <a href="#">Boots</a>
+            <a href="#">Slippers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown1">
+      <button class="dropbtn">Home & Furniture
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content mega-dropdown1">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Kitchen</h3>
+            <a href="#">Cook Ware</a>
+            <a href="#">Electric Corner</a>
+            <a href="#">Infrastructure</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Home Improvements</h3>
+            <a href="#">Cleaners</a>
+            <a href="#">Perfumes</a>
+            <a href="#">Sanitizer</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Living Room</h3>
+            <a href="#">Lightning</a>
+            <a href="#">Dining Table</a>
+            <a href="#">Jugs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown1">
+      <button class="dropbtn">Sport & Fitness
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content mega-dropdown1">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Sport</h3>
+            <a href="#">Cricket</a>
+            <a href="#">Football</a>
+            <a href="#">Volley Ball</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Fitness</h3>
+            <a href="#">Dumbells</a>
+            <a href="#">Mini-Set</a>
+            <a href="#">Powders</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Featured</h3>
+            <a href="#">Suppliments</a>
+            <a href="#">Gadgets</a>
+            <a href="#">Kits</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown1">
+      <button class="dropbtn">Kids Store
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content mega-dropdown1">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Toys</h3>
+            <a href="#">Dolls</a>
+            <a href="#">E-Gadgets</a>
+            <a href="#">Tabs</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Books</h3>
+            <a href="#">Story Books</a>
+            <a href="#">Educational</a>
+            <a href="#">Guidlines</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Care</h3>
+            <a href="#">Body Care</a>
+            <a href="#">Hair Care</a>
+            <a href="#">Growth</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown1">
+      <button class="dropbtn">More
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content">
+        <a href="#">Notifications</a>
+        <a href="#">Customer Care</a>
+        <a href="#">Download App</a>
+      </div>
+    </div>
+
+    <a href="#about">Coupons</a>
+
+    <div class="dropdown1 responsive">
+      <button class="dropbtn">Account
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content">
+        <a href="#">Profile</a>
+        <a href="#">Orders</a>
+        <a href="#">Wishlist</a>
+        <a href="#">Login</a>
+      </div>
+    </div>
+
+
+    <div class="dropdown1 responsive">
+      <button class="dropbtn"><i class="fa fa-shopping-cart"></i><span class="value">2</span>
+      </button>
+      <div class="dropdown1-content">
+        <a>
+          {{#each Cart}}
+          <ul>
+            <li>
+              <img src="/category-image/{{this.Front_image}}" alt="Item">
+            </li>
+            <li>
+              <span class="title">{{this.Product_title}}</span>
+              <span class="sub-title"><i class="fa fa-rupee"></i><span>
+            </li>
+            <li><i class="fa fa-trash"></i></li>
+          </ul>
+          {{/each}}
+
+          <button type="submit" class="btn1">CheckOut</button>
+        </a>
+      </div>
+    </div>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+  </div>
+
+
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h2 id="offcanvasRightLabel">Login</h2>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      {{!-- <form action="/userlogin" method="post">
+        --}}
+        <form action="">
+
+          <div class="form-outline mb-4">
+            <input type="email" id="email" name="email" class="form-control form-control-lg" />
+            <label class="form-label" for="form2Example18">Email address</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="password" id="password" name="password" class="form-control form-control-lg" />
+            <label class="form-label" for="form2Example28">Password</label>
+
+          </div>
+
+          <div class="pt-1 mb-4">
+            <a class="btn btn-success " type="button" onclick="verifyCreds()">Login</a>
+
+
+
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="offcanvas">
+              Register
+            </button>
+           
+            <div>
+              <p id="errormsg"></p>
+            </div> 
+           
+            {{#if registerStatus}}
+            <p class=" text-danger fs-5">{{registerStatus}}</p>
+            {{/if}}
+            {{#if RegErr}}
+            <p class=" text-success fs-5">{{RegErr}}</p>
+            {{/if}}
+
+            <p class="small mt-2 mb-5 pb-lg-2"><a class="text-muted" href="/otplogin">Forgot password?Try OTP
+                login</a>
+            </p>
+            <div class="socialMedia">Log in using
+              <span class="">
+                <a href=""><i class="fab fa-facebook-f text-primary fs-5"></i></a>
+                <a href=""><i class="fab fa-google text-danger fs-5"></i></a>
+                <a href=""><i class="fab fa-instagram text-secondary fs-5"></i></a>
+
+              </span>
+            </div>
+
+        </form>
+        <script>
+
+          function verifyCreds() {
+            var Email = document.getElementById('email').value
+            var Password = document.getElementById('password').value
+            var errormsg = document.getElementById('errormsg')
+            $.ajax({
+              url: '/userlogin',
+              data: {
+                email: Email,
+                password: Password,
+              },
+              method: 'post',
+              success: (response) => {
+                if(response.status){
+                  if(response.user.Isblocked){
+                errormsg.innerHTML="This user is blocked"
+                errormsg.style.color='red'
+                location.reload()
+                }
+                else{
+                  console.log(response.redirectTo)
+                    location.href="/userlogin"
+                }
+                }
+                else{
+                  errormsg.innerHTML="Invalid email or password"
+                errormsg.style.color='red'
+                location.reload()  
+                }
+              }
+            })
+          }
+        </script>
+
+
+    </div>
+  </div>
+</header>
+<div class="modal fade" tabindex="-1" id="registerModal"
+  aria-labelledby="registerModalLabel"   aria-hidden="true">
+  <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="">
+      
+                    <div class="row d-flex justify-content-center align-items-center h-100 bg-light">
+                      
+                      <div class="col">
+                        <div class="card card-registration my-4">
+                          <div class="row g-0">
+
+
+                            <div class="card-body p-md-5 text-black ">
+                            <h4 class="text-success">GreenShoppy</h4>
+                              <h5 class="mb-5 text-uppercase">Customer registration form</h5>
+                              <form action="/registration" method="post">
+                                <div class="row">
+                                  <div class="mb-4">
+                                    <div class="form-outline">
+                                      <input type="text" id="fname" name="fullname" onkeyup="validateName()"
+                                        class="form-control form-control-lg" required />
+                                      <label class="form-label" for="form3Example1m">Full name</label>
+
+                                    </div>
+                                    <span id="fname_span"></span>
+                                  </div>
+
+                                </div>
+
+                                <div class="row">
+                                  <div class="mb-4">
+                                    <div class="form-outline">
+                                      <input type="text" id="mobile" name="mobile" onkeyup="mobileValidation()"
+                                        class="form-control form-control-lg" required />
+                                      <label class="form-label" for="form3Example1m1">Mobile Number</label>
+
+                                    </div>
+                                    <span id="mobile_span" </span></span>
+                                  </div>
+
+                                </div>
+
+
+
+                                <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                                  <h6 class="mb-0 me-4">Gender: </h6>
+
+                                  <div class="form-check form-check-inline mb-0 me-4">
+                                    <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                                      value="Female" />
+                                    <label class="form-check-label" for="femaleGender">Female</label>
+                                  </div>
+
+                                  <div class="form-check form-check-inline mb-0 me-4">
+                                    <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                                      value="Male">
+                                    <label class="form-check-label" for="maleGender">Male</label>
+                                  </div>
+
+                                  <div class="form-check form-check-inline mb-0">
+                                    <input class="form-check-input" type="radio" name="gender" id="otherGender"
+                                      value="Other">
+                                    <label class="form-check-label" for="otherGender">Other</label>
+                                  </div>
+
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                  <input type="email" id="emailReg" name="email" onkeyup="emailValidation()"
+                                    class="form-control form-control-lg" required />
+                                  <label class="form-label" for="form3Example97">Email ID</label>
+
+                                </div>
+                                <span id="email_span"></span>
+                                <div class="form-outline mb-4">
+                                  <input type="Password" name="password" id="passwordvalue"
+                                    onkeyup="passwordValidation()" class="form-control form-control-lg" required />
+                                  <label class="form-label" for="form3Example97">Password</label>
+
+                                </div>
+                                <span id="password_span"></span>
+                                <div class="form-outline mb-4">
+                                  <input type="Password" id="repassword" name="repassword"
+                                    onkeyup="repasswordValidation()" class="form-control form-control-lg" required />
+                                  <label class="form-label" for="form3Example97">Confirm Password</label>
+
+                                </div>
+                                <span id="repassword_span"></span>
+
+                                <div class="d-flex justify-content-end pt-3">
+                                  <a class="btn btn-light btn-lg" href="/">Back</a>
+                                  <button type="submit" class="btn btn-warning btn-lg ms-2">Register</button>
+                                  <div class="reg-error" id="reg-error"></div>
+                                </div>
+
+                              </form>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+</div>
+
+<script>
+  function warning(){
+    swal("Please login to your account")
+  }
+
+</script>
+
+<script>
+
+
+                function validateName() {
+                  let field = document.getElementById('fname').value
+                  console.log(field)
+                  let span_field = document.getElementById('fname_span')
+                  if (field.length == 0) {
+                    span_field.innerHTML = "This field is required"
+                    span_field.style.color = "red"
+                  }
+                  else
+                    if (field.match(/^[A-Za-z ]*$/)) {
+                      span_field.innerHTML = "Valid"
+                      span_field.style.color = "green"
+                    }
+                    else {
+                      span_field.innerHTML = "Write a valid name"
+                      span_field.style.color = "red"
+                    }
+                }
+
+                function mobileValidation() {
+                  let field = document.getElementById('mobile').value
+                  console.log(field)
+                  let span_field = document.getElementById('mobile_span')
+                  if (field.length == 0) {
+                    span_field.innerHTML = "This field is required"
+                    span_field.style.color = "red"
+                  }
+                  else
+                    if (field.match(/^[0-9]*$/) && field.length == 10) {
+                      span_field.innerHTML = "Valid"
+                      span_field.style.color = "green"
+                    }
+                    else {
+                      span_field.innerHTML = "Write a valid mobile number"
+                      span_field.style.color = "red"
+                    }
+                }
+                function emailValidation() {
+                  let field = document.getElementById('emailReg').value
+                  console.log('ho',field)
+                  let span_field = document.getElementById('email_span')
+                  if (field.length == 0) {
+                    span_field.innerHTML = "This field is required"
+                    span_field.style.color = "red"
+                  }
+                  else
+                    if (field.match(/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/)) {
+                      span_field.innerHTML = "Valid"
+                      span_field.style.color = "green"
+                    }
+                    else {
+                      span_field.innerHTML = "Write a valid Email id"
+                      span_field.style.color = "red"
+                    }
+                }
+
+
+
+                function passwordValidation() {
+
+                  let field = document.getElementById('passwordvalue').value
+                  console.log(field)
+                  let span_field = document.getElementById('password_span')
+                  if (field.length == 0) {
+                    span_field.innerHTML = "This field is required"
+                    span_field.style.color = "red"
+                  }
+                  else
+                    if (field.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,1024}$/)) {
+                      span_field.innerHTML = "Valid"
+                      span_field.style.color = "green"
+                    }
+                    else {
+                      span_field.innerHTML = "Password should be of 8 characters and should contain atleast one capital letter ,one number and one special character"
+                      span_field.style.color = "red"
+                    }
+                }
+                function repasswordValidation() {
+
+                  let field1 = document.getElementById('passwordvalue').value
+                  let field = document.getElementById('repassword').value
+                  console.log(field)
+                  let span_field = document.getElementById('repassword_span')
+                  if (field === field1) {
+
+                    span_field.innerHTML = "Password Matched"
+                    span_field.style.color = "green"
+                  }
+                  else {
+                    span_field.innerHTML = "Password should match"
+                    span_field.style.color = "red"
+                  }
+                }
+              </script>

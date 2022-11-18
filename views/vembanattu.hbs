@@ -1,0 +1,102 @@
+<section class="">
+
+  <div class="row bg-light">
+
+    <div class=" col-md-2 mt-2">
+      <div class="d-flex">
+      <div class="sidebar flex">
+        <div class="dropdown">
+          <a class="dropdown-item" type="button" href="#collapse3" id="dropdownMenu2" data-toggle="collapse"
+            aria-expanded="false" aria-controls="collapse1">
+            Categories
+          </a>
+          <div class="collapse  mb-1" id="collapse3">
+            {{#each categories}}
+            <a class="dropdown-item" href="/vembanattustore/category/{{this._id}}">{{this.categoryName}}</a>
+            {{/each}}
+          
+          </div>
+        </div>
+        <div class="dropdown">
+          <a class="dropdown-item" type="button" href="#collapse1" id="dropdownMenu2" data-toggle="collapse"
+            aria-expanded="false" aria-controls="collapse1">
+            Brands
+          </a>
+          <div class="collapse  mb-1" id="collapse1">
+            {{#each brands}}
+            <a class="dropdown-item" type="button">{{this.brandName}}</a>
+            {{/each}}
+            
+          </div>
+        </div>
+         <div class="dropdown">
+          <a class="dropdown-item" type="button" href="#collapse2" id="dropdownMenu2" data-toggle="collapse"
+            aria-expanded="false" aria-controls="collapse1">
+            Offer Zone
+          </a>
+          <div class="collapse  mb-1" id="collapse2">
+            <a class="dropdown-item" type="button">Up to 20%</a>
+            <a class="dropdown-item" type="button">Up to 50%</a>
+            <a class="dropdown-item" type="button">More than 50%</a>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+
+    <div class=" col-md-10">
+      <div class="products">
+  <section style="background-color: rgb(239, 246, 242);">
+    <div class="container">
+      <div class="row">
+        {{#each stores}}
+        
+          <div class="col-md-4 mt-5">
+                <a href="/userlogin/productView/{{this._id}}?_method=get">
+            <div class="cards">
+              <div class="card" >
+
+              <img src="/category-image/{{this.Front_image}}" class="card-img-top justify-content-center"
+                style="height:250px ;width:250px;" alt="" />
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <p class="small"><a href="#!" class="text-muted">{{Category}}</a></p>
+                  <p class="small text-danger fs-4"><s>{{this.Maximum_retail_price}}</s></p>
+                </div>
+
+                <div class="d-flex justify-content-between mb-3">
+
+                  <h5 class="mb-0 text-success">{{this.Brand_name}}</h5>
+
+                  <h5 class="text-dark mb-0 fs-4">₹{{this.Selling_Price}}</h5>
+                </div>
+                <h5 class="mb-0 text-dark">{{this.Product_title}}</h5>
+
+                <div class="d-flex justify-content-between mb-2">
+                  <p class="text-muted mb-0">{{this.Product_description}} </p>
+
+                </div>
+
+
+
+              </div>
+              </div>
+            </div>
+
+
+          </div>
+        </a>
+        {{/each}}
+      </div>
+
+
+
+    </div>
+</div>
+    </div>
+
+  </div>
+
+</section>

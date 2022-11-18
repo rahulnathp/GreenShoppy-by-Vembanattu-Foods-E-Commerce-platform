@@ -1,0 +1,275 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<section class="" style="background-color:rgb(246, 249, 245) ;">
+  <div class="container">
+
+    <div class="row pt-5">
+      <div class="col-6 col-md-3">
+        <div class="card border border-3">
+          <div class="card-body px-4 py-4-5">
+            <div class="row">
+              <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-around align-items-center">
+                <div class=" blue mb-2">
+                  <i class="fa-regular fa-user fa-xl"></i>
+                </div>
+                <div class="text-center">
+                  <h6 class="text-muted font-semibold">Total Number Of Orders</h6>
+                  <h6 class="font-extrabold mb-0">{{ordersCount}}</h6>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card border border-3">
+          <div class="card-body px-4 py-4-5">
+            <div class="row">
+              <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-around align-items-center">
+                <div class=" blue mb-2">
+                  <i class="fa-regular fa-user fa-xl"></i>
+                </div>
+                <div class="text-center">
+                  <h6 class="text-muted font-semibold">Total Number Of Products</h6>
+                  <h6 class="font-extrabold mb-0">{{productsCount}}</h6>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card border border-3">
+          <div class="card-body px-4 py-4-5">
+            <div class="row">
+              <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-around align-items-center">
+                <div class=" blue mb-2">
+                  <i class="fa-regular fa-user fa-xl"></i>
+                </div>
+                <div class="text-center">
+                  <h6 class="text-muted font-semibold">Total Number Of Users</h6>
+                  <h6 class="font-extrabold mb-0">{{usersCount}}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card border border-3">
+          <div class="card-body px-4 py-4-5">
+            <div class="row">
+              <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-around align-items-center">
+                <div class=" blue mb-2">
+                  <i class="fa-regular fa-user fa-xl"></i>
+                </div>
+                <div class="text-center">
+                  <h6 class="text-muted font-semibold">Total Revenue Generated</h6>
+                  <h6 class="font-extrabold mb-0">{{total}}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 py-5 h-auto text-center">
+        <h6 class="text-success font-semibold">Sales Per Year</h6>
+        <canvas id="yearChart"></canvas>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 py-5 h-auto text-center">
+        <h6 class="text-success font-semibold">Sales Per Week</h6>
+        <canvas id="lineChart"></canvas>
+      </div>
+      <div class="col-md-6 py-5 h-auto text-center">
+        <h6 class="text-success font-semibold">Sales Per Month</h6>
+        <canvas id="barChart"></canvas>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+
+  let finalWeek = []
+  let week = [{{ weekXAxis }}]
+  for (val of week) {
+    finalWeek.push("Week " + val)
+  }
+  var ctxB = document.getElementById("lineChart").getContext('2d');
+  var mylineChart = new Chart(ctxB, {
+    type: 'line',
+    data: {
+      labels: finalWeek,
+      datasets: [{
+        label: '',
+        data: [{{ weekYAxis }}],
+
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+    options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+  });
+  /////////////////////////////////////////// BAR CHART////////////////////////////
+  let month = []
+  let month1 = [{{ monthXAxis }}]
+  for (val of month1) {
+    switch (val) {
+      case 1:
+        month.push('Jan')
+        break;
+      case 2:
+        month.push('Feb')
+        break;
+      case 3:
+        month.push('Mar')
+        break;
+      case 4:
+        month.push('Apr')
+        break;
+      case 5:
+        month.push('May')
+        break;
+      case 6:
+        month.push('Jun')
+        break;
+      case 7:
+        month.push('Jul')
+        break;
+      case 8:
+        month.push('Aug')
+        break;
+      case 9:
+        month.push('Sep')
+        break;
+      case 10:
+        month.push('Oct')
+        break;
+      case 11:
+        month.push('Nov')
+        break;
+      case 12:
+        month.push('Dec')
+        break;
+    }
+  }
+  console.log(month)
+
+  var ctxB = document.getElementById("barChart").getContext('2d');
+  var myBarChart = new Chart(ctxB, {
+    type: 'bar',
+    data: {
+      labels: month,
+      datasets: [{
+        label: '',
+        data: [{{ monthYAxis }}],
+
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+    options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+  });
+
+
+  ///////////////////////////////////////////////Year Chart////////////////////////////////////////
+
+  var ctxB = document.getElementById("yearChart").getContext('2d');
+  var myBarChart = new Chart(ctxB, {
+    type: 'bar',
+    data: {
+      labels: [{{ yearXAxis }}],
+    datasets: [{
+      label: '',
+      data: [{{ yearYAxis }}],
+
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(255, 159, 64, 0.2)'
+    ],
+    borderColor: [
+      'rgba(255,99,132,1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(153, 102, 255, 1)',
+      'rgba(255, 159, 64, 1)'
+    ],
+    borderWidth: 1
+  }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+  });
+
+</script>

@@ -1,0 +1,305 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+<style>
+    #wrap-jquery-error {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+<section class="bg-secondary" >
+
+
+    <div class="class row">
+        <div class="class col-md-12" >
+            <a href="#categoryId" class="btn btn-white ms-2 mt-2" style="font-weight:bold ;">Category Management</a>
+                <a href="#brandId" class="btn btn-white mt-2" style="font-weight:bold ;">Add Brand</a>
+                <a href="#brandId" class="btn btn-white mt-2" style="font-weight:bold ;">Category Management</a>
+         
+                
+                
+
+
+          
+        </div>
+       
+    </div>
+
+    <!-- Tabs navs -->
+
+    <!-- Tabs content -->
+
+    
+    <section class="tab-content bg-light" id="categoryId">
+        <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel"
+            aria-labelledby="ex-with-icons-tab-1">
+            <div class="container my-2">
+                <div class="row">
+                    {{#if exist}}
+                    <span class="text-danger">Category Name Already Exist, Try Another One</span>
+                    {{/if}}
+                    <div class="container d-flex mt-2 mb-1">
+                        <a class="btn btn-secondary" data-toggle="collapse" href="#collapseExample" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            Add Category
+                        </a>
+                    </div>
+                    <div class="collapse  mb-1" id="collapseExample">
+                        <div class="card card-body border border-2">
+                            <form action="/adminlogin/categories/addcategory" method="post" class="form-inline "
+                                enctype="multipart/form-data" id="form">
+                                <div class="form-group mb-2" id="wrap-jquery-error">
+                                    <input type="text" class="form-control" name="categoryName"
+                                        placeholder="Category Name">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2" id="wrap-jquery-error">
+                                    <input type="text" class="form-control" name="description"
+                                        placeholder="Description">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2" id="wrap-jquery-error">
+                                    <input type="file" class="form-control" name="cImage">
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <table id="categoryDatatable" class="table table-striped nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Offer - In Percentage </th>
+                                <th scope="col">Image</th>
+                                <th class="text-center notExport" scope="col">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each category}}
+                            <tr>
+                                <th scope="row"></th>
+                                <td>{{this.categoryName}}</td>
+                                <td>{{this.description}}</td>
+                                <td>
+
+                                    <form action="/admin/change-category-offer" method="post">
+                                        <div class="d-flex">
+                                            <div class="form-group">
+                                                <input name="offer" class="form-control" value="{{this.offer}}"
+                                                    type="number">
+                                            </div>
+                                            <div class="form-group ms-2">
+                                                <button type="submit"
+                                                    class="btn btn-primary form-control">Submit</button>
+                                            </div>
+                                        </div>
+                                        <input type="text" value="{{this._id}}" name="categoryId" hidden>
+                                        <input type="text" value="{{this.categoryName}}" name="categoryName" hidden>
+                                    </form>
+                                </td>
+                                <td><img style="width: 50px;height: 50px;" src="/category-image/{{this.categoryImage}}"
+                                        alt=""></td>
+                                <td class="text-center">
+                                    {{!-- <a href="/admin/products/edit-product/{{this._id}}"
+                                        class="btn btn-primary">Edit</a>
+                                    --}}
+                                    <form action="/adminlogin/categories/delete-category/{{this._id}}?_method=delete"
+                                        method="post">
+                                        <button class="btn btn-danger" type="submit"
+                                            onclick="return confirm('Are you sure you want to delete {{this.categoryName}}')"
+                                            style="background-color: #f93154;">Delete</a>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        {{!-- <div class="tab-pane fade" id="ex-with-icons-tabs-2" role="tabpanel"
+            aria-labelledby="ex-with-icons-tab-2">
+            <div class="container">
+
+            </div>
+        </div> --}}
+        {{!-- <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel"
+            aria-labelledby="ex-with-icons-tab-3">
+            Tab 3 content
+        </div> --}}
+
+   </section>
+
+    <section class="tab-content bg-light" id="brandId">
+        <div class="tab-pane fade show active" id="ex-with-icons-tab-2" role="tabpanel"
+            aria-labelledby="ex-with-icons-tab-2">
+            <div class="container my-2">
+                <div class="row">
+                    {{#if exist}}
+                    <span class="text-danger">Brand Name Already Exist, Try Another Brand</span>
+                    {{/if}}
+                    <div class="container d-flex mt-2 mb-1">
+                        <a class="btn btn-secondary" data-toggle="collapse" href="#collapseExample1" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            Add Brand
+                        </a>
+                    </div>
+                    <div class="collapse  mb-1" id="collapseExample1">
+                        <div class="card card-body border border-2">
+                            <form action="/adminlogin/categories/addbrand" method="post" class="form-inline "
+                                enctype="multipart/form-data" id="form">
+                                <div class="form-group mb-2" id="wrap-jquery-error">
+                                    <input type="text" class="form-control" name="brandName"
+                                        placeholder="Brand Name">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2" id="wrap-jquery-error">
+                                    <input type="text" class="form-control" name="description"
+                                        placeholder="Description">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2" id="wrap-jquery-error">
+                                    <input type="file" class="form-control" name="bImage">
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <table id="brandDatatable" class="table table-striped nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Brand Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Offer - In Percentage </th>
+                                <th scope="col">Image</th>
+                                <th class="text-center notExport" scope="col">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each brands}}
+                            <tr>
+                                <th scope="row"></th>
+                                <td>{{this.brandName}}</td>
+                                <td>{{this.description}}</td>
+                                <td>
+
+                                    <form action="/admin/change-category-offer" method="post">
+                                        <div class="d-flex">
+                                            <div class="form-group">
+                                                <input name="offer" class="form-control" value="{{this.offer}}"
+                                                    type="number">
+                                            </div>
+                                            <div class="form-group ms-2">
+                                                <button type="submit"
+                                                    class="btn btn-primary form-control">Submit</button>
+                                            </div>
+                                        </div>
+                                        <input type="text" value="{{this._id}}" name="categoryId" hidden>
+                                        <input type="text" value="{{this.brandName}}" name="categoryName" hidden>
+                                    </form>
+                                </td>
+                                <td><img style="width: 50px;height: 50px;" src="/category-image/{{this.brandImage}}"
+                                        alt=""></td>
+                                <td class="text-center">
+                                    {{!-- <a href="/admin/products/edit-product/{{this._id}}"
+                                        class="btn btn-primary">Edit</a>
+                                    --}}
+                                    <form action="/adminlogin/brands/delete-brand/{{this._id}}?_method=delete"
+                                        method="post">
+                                        <button class="btn btn-danger" type="submit"
+                                            onclick="return confirm('Are you sure you want to delete {{this.brandName}}')"
+                                            style="background-color: #f93154;">Delete</a>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                                                          
+                </div>
+
+            </div>
+        </div>
+        {{!-- <div class="tab-pane fade" id="ex-with-icons-tabs-2" role="tabpanel"
+            aria-labelledby="ex-with-icons-tab-2">
+            <div class="container">
+
+            </div>
+        </div> --}}
+        {{!-- <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel"
+            aria-labelledby="ex-with-icons-tab-3">
+            Tab 3 content
+        </div> --}}
+    </section>
+ </section>
+
+
+    <!-- Tabs content -->
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#categoryDatatable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excel',
+                    text: 'Excel',
+                    className: 'btn btn-default',
+                    exportOptions: {
+                        columns: ':not(.notExport)'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: 'PDF',
+                    className: 'btn btn-default',
+                    exportOptions: {
+                        columns: ':not(.notExport)'
+                    }
+                }
+            ],
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.modal({
+                        header: function (row) {
+                            var data = row.data();
+                            return 'Details for ' + data[0] + ' ' + data[1];
+                        }
+                    }),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                        tableClass: 'table'
+                    })
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    jQuery('#form').validate({
+        rules: {
+            categoryName: 'required',
+            description: 'required',
+            cImage: 'required',
+        }, messages: {
+            pName: 'Please Enter Valid Name',
+            description: 'Please Enter Description',
+            cImage: 'Please Enter Image',
+        }, submitHandler: function (form) {
+            form.submit();
+        }
+    })
+</script>

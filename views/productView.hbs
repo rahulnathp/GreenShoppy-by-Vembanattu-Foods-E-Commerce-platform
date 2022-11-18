@@ -1,0 +1,111 @@
+
+<section class="sections">
+<div class="row">
+   
+    <div class="col-md-10">
+
+
+
+
+
+        <div class="row mt-2">
+
+            {{#each productsView}}
+
+            <div class="col-md-6">
+                <div class="row">
+                    
+                <div id="imageElements" >
+                    <img  onclick="showImage(this)" src="/category-image/{{this.Front_image}}">
+                </div>
+               <div id="imageElements" >
+                    <img onclick="showImage(this)" src="/category-image/{{this.Back_image}}">
+                </div>
+               <div id="imageElements" >
+                   <img onclick="showImage(this)" src="/category-image/{{this.Nutrients_image}}">
+                </div>
+                <div id="imageElements">
+                    <img onclick="showImage(this)" src="/category-image/{{this.Fssai_image}}">
+                </div>
+                </div>
+                <div class="row">
+                <div class="img-zoom-container" >
+                    <img id="imageDiv" src="/category-image/{{this.Front_image}}" alt="">
+                    
+                  </div>   
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+
+
+                <div class=" fs-5 text-primary ">{{this.Brand_name}}</div>
+                <div class=" fs-3 text-dark ">{{this.Product_title}}</div>
+                <div class=" fs-4 text-dark" style="opacity: 0.6 ;">{{this.Product_description}}</div>
+                <div class=" fs-3 text-dark" style="font-family:'Times New Roman', Times, serif ;">Special Price
+                    :
+                    {{this.Selling_Price}}
+                    <span class="small text-dark fs-4"
+                        style="opacity:0.6 ;font-family: 'Times New Roman', Times, serif;"><s>{{this.Maximum_retail_price}}</s>
+                    </span>
+                </div>
+                <div>
+                    <a class="btn btn-warning btn-lg p-3 mt-2" id="cartButton"
+                        href="/userlogin/add-to-cart/{{this._id}}?_method=get">Add to cart</a>
+                    <a class="btn btn-lg p-3 mt-2 ms-2" href=""
+                        style="background-color:rgba(118, 235, 105, 0.955) ;">Buy Now</a>
+                </div>
+
+            </div>
+
+
+            {{/each}}
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
+</section>
+<script type="text/javascript">
+(function() {
+
+var img = document.getElementById('imageElements').firstChild;
+img.onload = function() {
+    if(img.height > img.width) {
+        img.height = '100%';
+        img.width = 'auto';
+    }
+};
+
+}());
+
+function showImage(image){
+ var imgDiv = document.getElementById('imageDiv')
+ imgDiv.src=image.src
+
+}
+</script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
+<script> $('#lightSlider').lightSlider({ gallery: true, item: 1, loop: true, slideMargin: 0, thumbItem: 9 });</script>
+<script src="/javascripts/zoom.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#imageDiv").imagezoomsl({
+            zoomrange:[4,4]
+        })
+    })
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

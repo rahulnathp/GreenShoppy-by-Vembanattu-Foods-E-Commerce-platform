@@ -1,0 +1,535 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+<style>
+  #wrap-jquery-error {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>
+<section class="bg-secondary">
+
+
+  <div class="class row">
+    <div class="class col-md-2">
+      <a href="#" class="btn btn-white ms-2 mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+        style="font-weight:bold ;">Add listing</a>
+    </div>
+    <div class="co-md-10">
+      <div class="products">
+        <table class="table bg-light mt-2">
+
+          <thead>
+            <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Product details</th>
+                  <th scope="col">Selling Price</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Stock</th>
+                  <th scope="col">Additional Info</th>
+                  <th scope="col">action</th>
+                  <th scope="col">Update</th>
+                  <th scope="col">Delete</th>
+
+
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+
+                  <th scope="col"></th>
+
+
+                </tr>
+          </thead>
+           <tbody>
+                                {{#each stores}}
+                                <tr>
+                                    <td><img src="/category-image/{{this.Front_image}}" style="width: 50px;"></td>
+                                    <td style="font-size: smaller;color: blue;white-space: nowrap;" class="">
+                                        {{this.Brand_name}} <br>
+                                        {{this.Product_title}} <br>{{this.Product_id}}</td>
+
+                                    <td>{{this.Selling_Price}}</td>
+                                    <td>{{this.Category}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{this.Mobile}}</td>
+                                    <td><button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop{{this.Product_id}}">Update
+                                        </button>
+                                        <div class="modal fade" id="staticBackdrop{{this.Product_id}}"
+                                            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                            aria-labelledby="staticBackdrop{{this.Product_id}}Label{{this.Product_id}}"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="container py-5 h-100">
+                                                        <img src="/images/Vembanattu.JPG" alt="">
+                                                        <div
+                                                            class="row d-flex justify-content-center align-items-center h-100 bg-light">
+                                                            <div class="col">
+                                                                <div class="card card-registration my-4">
+                                                                    <div class="row g-0">
+
+
+                                                                        <div class="card-body p-md-5 text-black">
+
+                                                                            <h5 class="mb-5 text-uppercase">Update Data
+                                                                            </h5>
+
+                                                                            <form
+                                                                                action="/adminlogin/update?_method=put"
+                                                                                method="post">
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6 mb-4">
+                                                                                        <div class="form-outline">
+                                                                                            <input type="text"
+                                                                                                id="form3Example1n"
+                                                                                                name="productid"
+                                                                                                value="{{this.Product_id}}"
+                                                                                                class="form-control form-control-lg" />
+                                                                                            <label class="form-label"
+                                                                                                for="form3Example1n">Product
+                                                                                                ID</label>
+                                                                                            <input type="text"
+                                                                                                id="form3Example90"
+                                                                                                name="_id"
+                                                                                                value="{{this._id}}"
+                                                                                                class="form-control form-control-lg bg-danger" />
+                                                                                            This field cannot be changed
+                                                                                            <label class="form-label"
+                                                                                                for="form3Example90"></label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6 mb-4">
+                                                                                        <div class="form-outline">
+                                                                                            <input type="number"
+                                                                                                id="form3Example1m1"
+                                                                                                name="maximumretailprice"
+                                                                                                value="{{this.Maximum_retail_price}}"
+                                                                                                class="form-control form-control-lg" />
+                                                                                            <label class="form-label"
+                                                                                                for="form3Example1m1">Maximum
+                                                                                                Retail
+                                                                                                Price</label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6 mb-4">
+                                                                                        <div class="form-outline">
+                                                                                            <input type="number"
+                                                                                                id="form3Example1n1"
+                                                                                                name="sellingprice"
+                                                                                                value="{{this.Selling_Price}}"
+                                                                                                class="form-control form-control-lg" />
+                                                                                            <label class="form-label"
+                                                                                                for="form3Example1n1">Selling
+                                                                                                Price</label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-outline mb-4">
+                                                                                    <input type="text"
+                                                                                        id="form3Example8"
+                                                                                        name="producttitle"
+                                                                                        value="{{this.Product_title}}"
+                                                                                        class="form-control form-control-lg" />
+                                                                                    <label class="form-label"
+                                                                                        for="form3Example8">Product
+                                                                                        Title</label>
+                                                                                </div>
+                                                                                <div class="form-outline mb-4">
+                                                                                    <input type="text"
+                                                                                        id="form3Example8"
+                                                                                        name="productdescription"
+                                                                                        value="{{this.Product_description}}"
+                                                                                        class="form-control form-control-lg" />
+                                                                                    <label class="form-label"
+                                                                                        for="form3Example8">Product
+                                                                                        description</label>
+                                                                                </div>
+
+
+
+
+
+
+
+                                                                                <div class="form-outline mb-4">
+                                                                                    <input type="text"
+                                                                                        id="form3Example90"
+                                                                                        value="{{this.Quantity}}"
+                                                                                        class="form-control form-control-lg"
+                                                                                        name="quantity" />
+                                                                                    <label class="form-label"
+                                                                                        for="form3Example90">Quantity</label>
+
+                                                                                </div>
+
+
+                                                                                <div class="form-outline mb-4">
+                                                                                    <input type="text"
+                                                                                        id="form3Example97"
+                                                                                        name="frontimage"
+                                                                                        Value="{{this.Front_image}}"
+                                                                                        class="form-control form-control-lg" />
+                                                                                    <label class="form-label"
+                                                                                        for="form3Example97">Front
+                                                                                        Image</label>
+                                                                                </div>
+                                                                                <div class="form-outline mb-4">
+                                                                                    <input type="text"
+                                                                                        id="form3Example97"
+                                                                                        name="backimage"
+                                                                                        Value="{{this.Back_image}}"
+                                                                                        class="form-control form-control-lg" />
+                                                                                    <label class="form-label"
+                                                                                        for="form3Example97">Back
+                                                                                        Image</label>
+                                                                                </div>
+                                                                                <div class="form-outline mb-4">
+                                                                                    <input type="text"
+                                                                                        id="form3Example97"
+                                                                                        name="moreimage1"
+                                                                                        Value="{{this.Nutrients_image}}"
+                                                                                        class="form-control form-control-lg" />
+                                                                                    <label class="form-label"
+                                                                                        for="form3Example97">More
+                                                                                        Image</label>
+                                                                                </div>
+                                                                                <div class="form-outline mb-4">
+                                                                                    <input type="text"
+                                                                                        id="form3Example97"
+                                                                                        name="moreimage2"
+                                                                                        Value="{{this.Fssai_image}}"
+                                                                                        class="form-control form-control-lg" />
+                                                                                    <label class="form-label"
+                                                                                        for="form3Example97">More
+                                                                                        Image</label>
+                                                                                </div>
+                                                                                <div class="form-outline mb-4">
+                                                                                    <div class="form-group mx-sm-3 mb-2"
+                                                                                        id="wrap-jquery-error">
+                                                                                        <input type="file"
+                                                                                            class="form-control-lg"
+                                                                                            name="Vimage"
+                                                                                            multiple>select
+                                                                                        Images
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                                <div
+                                                                                    class="d-flex justify-content-end pt-3">
+                                                                                    <a class="btn btn-light btn-lg"
+                                                                                        href="/adminlogin">Back</a>
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-warning btn-lg ms-2">Update</button>
+                                                                                    <div class="reg-error"
+                                                                                        id="reg-error"></div>
+                                                                                </div>
+
+                                                                            </form>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        </tweqd>
+                                    <td><a class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#{{this.Product_id}}">Delete
+                                        </a>
+                                        <div class="modal fade" id="{{this.Product_id}}" data-bs-backdrop="static"
+                                            data-bs-keyboard="false" tabindex="-1"
+                                            aria-labelledby="{{this.Product_id}}Label{{this.Product_id}}"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="container py-5 h-100">
+                                                        <img src="/images/Vembanattu.JPG" alt="">
+                                                        <div
+                                                            class="row d-flex justify-content-center align-items-center h-100 bg-light">
+                                                            <div class="col">
+                                                                <div class="card card-registration my-4 bg-danger">
+                                                                    <div class="row g-0">
+
+
+                                                                        <div
+                                                                            class="card-body p-md-5 text-black bg-light">
+
+                                                                            <h5 class="mb-5 text-uppercase">Delete
+                                                                                Listing</h5>
+                                                                            <form
+                                                                                action="/adminlogin/delete/{{this._id}}?_method=delete"
+                                                                                method="post">
+                                                                                <div class="mt-3">
+                                                                                    <input type="" value="{{this._id}}"
+                                                                                        name="{{this._id}}">
+                                                                                    <label for="">Unique ID</label>
+                                                                                    <input type=""
+                                                                                        value="{{this.Product_id}}"
+                                                                                        class="mt-2"
+                                                                                        name="{{this.Product_id}}">
+                                                                                    <label for="">PRODUCT ID</label>
+
+                                                                                </div>
+
+                                                                                <div
+                                                                                    class="d-flex justify-content-end pt-3">
+                                                                                    <a class="btn btn-light btn-lg"
+                                                                                        href="/adminlogin">Cancel</a>
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-danger btn-lg ms-2">Delete</button>
+                                                                                    <div class="reg-error"
+                                                                                        id="reg-error"></div>
+                                                                                </div>
+
+                                                                            </form>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><a class="bi bi-gear btn" data-bs-toggle="modal"
+                                            data-bs-target="#settingsmodal{{this._id}}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                                                <path
+                                                    d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                                            </svg></i></td>
+                                    <!-- Button trigger modal -->
+
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="settingsmodal{{this._id}}" tabindex="-1"
+                                        aria-labelledby="settingsmodal{{this._id}}Label" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="settingsmodal{{this._id}}Label"></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <form action="/adminlogin/userpanel/blockid?_method=put" method="post">
+                                                    <div class="modal-body">
+
+                                                        Cutomer Access
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                role="switch" name="isblocked" id="isblocked"
+                                                                {{this.status}}>
+
+                                                            <label class="form-check-label text-danger">Customer View
+                                                            </label>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </tr>
+                                {{/each}}
+                            </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <!-- Tabs navs -->
+
+  <!-- Tabs content -->
+
+
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="container py-5 h-100">
+          <img src="/images/Vembanattu.JPG" alt="">
+          <div class="row d-flex justify-content-center align-items-center h-100 bg-light">
+            <div class="col">
+              <div class="card card-registration my-4">
+                <div class="row g-0">
+
+
+                  <div class="card-body p-md-5 text-black ">
+
+                    <h5 class="mb-5 text-uppercase">Add New Listing</h5>
+                    <form action="/addtolist" method="post" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="col-md-12 mb-5">
+                          <div class="form-outline">
+                            <div class="form-group">
+                              <input type="text" id="form3Example1m" name="brandname"
+                                class="form-control form-control-lg" />
+
+                              <select class="form-select" aria-label="Default select example">
+                                <option selected>Brand Name</option>
+                                {{#each brand}}
+                                <option value={{this.brandName}}>{{this.brandName}}</option>
+                                {{/each}}
+                              </select>
+                            </div>
+
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <input type="text" id="form3Example1n" name="productid"
+                              class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Example1n">Product ID</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <input type="number" id="form3Example1m1" name="maximumretailprice"
+                              class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Example1m1">Maximum Retail Price</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <input type="number" id="form3Example1n1" name="sellingprice"
+                              class="form-control form-control-lg" />
+                            <label class="form-label" for="form3Example1n1">Selling Price</label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input type="text" id="form3Example8" name="producttitle"
+                          class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example8">Product Title</label>
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input type="text" id="form3Example8" name="productdescription"
+                          class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example8">Product description</label>
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+
+                          <select class="select" name="expiry">
+                            <option>Expiry</option>
+                            <option value="1 month">1 month</option>
+                            <option value="2 Months">2 Months</option>
+                            <option value="3 Months">3 Months</option>
+                            <option value="4 Months">4 Months</option>
+                            <option value="6 Months">6 Months</option>
+                            <option value="8 Months">8 Months</option>
+                            <option value="10 Months">10 Months</option>
+                            <option value="12 Months ">12 Months</option>
+                            <option value="18 Months ">18 Months</option>
+                            <option value="24 Months">24 Months</option>
+
+                          </select>
+
+
+                        </div>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-group">
+                            <select class="form-select" aria-label="Default select example" name="category">
+                              <option selected>Category</option>
+                              {{#each category}}
+                              <option value={{this.categoryName}}>{{this.categoryName}}</option>
+                              {{/each}}
+                            </select>
+                          </div>
+                        </div>
+
+
+                      </div>
+
+
+
+
+
+                      <div class="form-outline mb-4">
+                        <input type="text" id="form3Example90" class="form-control form-control-lg" name="quantity" />
+                        <label class="form-label" for="form3Example90">Quantity</label>
+                      </div>
+
+
+
+
+                      <div class="form-outline mb-4">
+                        <div class="form-group mx-sm-3 mb-2" id="wrap-jquery-error">
+                          <input type="file" class="form-control-lg" name="Vimage" multiple>Fssai Image
+                        </div>
+                      </div>
+
+
+
+                      <div class="d-flex justify-content-end pt-3">
+                        <a class="btn btn-light btn-lg" href="/adminlogin">Back</a>
+                        <button type="submit" class="btn btn-warning btn-lg ms-2">Add to list</button>
+                        <div class="reg-error" id="reg-error"></div>
+                      </div>
+
+                    </form>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>

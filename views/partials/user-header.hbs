@@ -1,0 +1,249 @@
+<header>
+  <div class="menu">
+    <table>
+      <tr>
+        <td><a class="greenShoppyTitle" href="/">Green Shoppy</a></td>
+
+        <td>
+          <input type="text" class="search" name="search" placeholder="Search"><button type="submit"><i
+              class="fa fa-search"></i></button>
+        </td>
+        <td>
+          <span>
+            <div class="navbar">
+              <div class="dropdown1">
+                <button class="dropbtn">{{users.Full_name}}
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown1-content">
+                  <a href="#">Profile</a>
+                  <a href="/orders">Orders</a>
+                  <a href="#">Wishlist</a>
+                  <a href="/userlogout">Logout</a>
+                  {{!-- --}}
+                </div>
+              </div>
+              <div class="dropdown1">
+                <a href="/userlogin/cart"><button class="dropbtn cart"><i class="fa fa-shopping-cart"></i> <span
+                    class="value">{{cart.length}}</span>
+                </button></a>
+                <div class="dropdown1-content cart-content">
+
+                  <a>
+                    {{#each cart}}
+                    <ul>
+                      <li>
+                        <img src="/category-image/{{this.products.Front_image}}" alt="Item">
+                      </li>
+                      <li>
+                        <span class="title text-dark">{{this.products.Product_title}}</span>
+                        <span class="sub-title text-dark"><i class="fa fa-rupee">{{this.products.Selling_Price}}</i><span>
+                      </li>
+                      <li><i class="fa fa-trash text-dark"></i></li>
+                    </ul>
+                    {{/each}}
+
+                    <button type="submit" class="btn1 text-dark">CheckOut</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="topnav" id="myTopnav">
+    <div class="dropdown1">
+      <button class="dropbtn">Personal
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content mega-dropdown1">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Personal Care</h3>
+            <a href="#">Oral Care</a>
+            <a href="#">Herbals & Naturals</a>
+            <a href="#">Face Wash</a>
+          </div>
+          <div class="col-md-2">
+            <h3></h3>
+            <a href="#">Baby Wash</a>
+            <a href="#">Baby Oil</a>
+            <a href="#">More</a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown1">
+      <button class="dropbtn">Men & Women
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content mega-dropdown1">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Clothing</h3>
+            <a href="#">Men Jeans</a>
+            <a href="#">Women Jeggings</a>
+            <a href="#">Trousers</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Grooming</h3>
+            <a href="#">Perfumes</a>
+            <a href="#">Deodrants</a>
+            <a href="#">Hair Groom</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Footware</h3>
+            <a href="#">Casual</a>
+            <a href="#">Boots</a>
+            <a href="#">Slippers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown1">
+      <button class="dropbtn">Home & Furniture
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content mega-dropdown1">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Kitchen</h3>
+            <a href="#">Cook Ware</a>
+            <a href="#">Electric Corner</a>
+            <a href="#">Infrastructure</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Home Improvements</h3>
+            <a href="#">Cleaners</a>
+            <a href="#">Perfumes</a>
+            <a href="#">Sanitizer</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Living Room</h3>
+            <a href="#">Lightning</a>
+            <a href="#">Dining Table</a>
+            <a href="#">Jugs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown1">
+      <button class="dropbtn">Sport & Fitness
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content mega-dropdown1">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Sport</h3>
+            <a href="#">Cricket</a>
+            <a href="#">Football</a>
+            <a href="#">Volley Ball</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Fitness</h3>
+            <a href="#">Dumbells</a>
+            <a href="#">Mini-Set</a>
+            <a href="#">Powders</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Featured</h3>
+            <a href="#">Suppliments</a>
+            <a href="#">Gadgets</a>
+            <a href="#">Kits</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown1">
+      <button class="dropbtn">Kids Store
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content mega-dropdown1">
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Toys</h3>
+            <a href="#">Dolls</a>
+            <a href="#">E-Gadgets</a>
+            <a href="#">Tabs</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Books</h3>
+            <a href="#">Story Books</a>
+            <a href="#">Educational</a>
+            <a href="#">Guidlines</a>
+          </div>
+          <div class="col-md-2">
+            <h3>Care</h3>
+            <a href="#">Body Care</a>
+            <a href="#">Hair Care</a>
+            <a href="#">Growth</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown1">
+      <button class="dropbtn">More
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content">
+        <a href="#">Notifications</a>
+        <a href="#">Customer Care</a>
+        <a href="#">Download App</a>
+      </div>
+    </div>
+
+    <a href="#about">Coupons</a>
+
+    <div class="dropdown1 responsive">
+      <button class="dropbtn">Account
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown1-content">
+        <a href="#">Profile</a>
+        <a href="/orders">Orders</a>
+        <a href="#">Wishlist</a>
+        <a href="#">Logout</a>
+      </div>
+    </div>
+
+
+    <div class="dropdown1 responsive">
+      <button class="dropbtn"><i class="fa fa-shopping-cart"></i><span class="value">2</span>
+      </button>
+      <div class="dropdown1-content">
+        <a>
+          {{#each Cart}}
+          <ul>
+            <li>
+              <img src="/category-image/{{this.Front_image}}" alt="Item">
+            </li>
+            <li>
+              <span class="title">{{this.Product_title}}</span>
+              <span class="sub-title"><i class="fa fa-rupee"></i><span>
+            </li>
+            <li><i class="fa fa-trash"></i></li>
+          </ul>
+          {{/each}}
+
+          <button type="submit" class="btn1">CheckOut</button>
+        </a>
+      </div>
+    </div>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+  </div>
+
+
+
+  
+  
+</header>
